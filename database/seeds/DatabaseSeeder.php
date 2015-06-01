@@ -12,9 +12,13 @@ class DatabaseSeeder extends Seeder {
 	 */
 	public function run()
 	{
-		Model::unguard();
+        try{
+            $this->call('ZipcodeTableSeeder');
 
-		// $this->call('UserTableSeeder');
+            $this->command->info('Zipcode table seeded!');
+        } catch (Exception $e){
+            $this->command->info($e->getMessage());
+        }
 	}
 
 }
