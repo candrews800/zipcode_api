@@ -7,15 +7,17 @@ use \Illuminate\Database\Eloquent\Model;
 class Zipcode extends Model{
 
     public $timestamps = false;
+    protected $fillable = ['zipcode', 'city', 'state', 'lat', 'lon'];
 
     public static function createFromCSV($row){
-        $zip = new self;
-        $zip->zipcode = $row[0];
-        $zip->city = $row[1];
-        $zip->state = $row[2];
-        $zip->lat = $row[3];
-        $zip->lon = $row[4];
+        $fields = [
+            'zipcode' => $row[0],
+            'city' => $row[1],
+            'state' => $row[2],
+            'lat' => $row[3],
+            'lon' => $row[4]
+        ];
 
-        return $zip->save();
+        return self::create($fields);
     }
 }
