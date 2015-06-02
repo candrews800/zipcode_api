@@ -11,4 +11,11 @@
 |
 */
 
-Route::get('/', 'ZipcodeController@getNearby');
+Route::bind('zipcode', function($value)
+{
+    return App\Zipcode::where('zipcode', $value)->first();
+});
+
+Route::get('/near/{zipcode}/{distance}', 'ZipcodeController@getNearby');
+Route::get('/get/{zipcode}', 'ZipcodeController@get');
+Route::get('/find/{city}', 'ZipcodeController@find');

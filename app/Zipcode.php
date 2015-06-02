@@ -31,6 +31,5 @@ class Zipcode extends Model{
                                             * sin( radians(lat)))) AS distance, zipcode '
             ))
             ->having('distance', '<', $distance);
-
     }
 }
