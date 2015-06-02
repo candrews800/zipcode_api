@@ -32,6 +32,5 @@ class Zipcode extends Model{
             ))
             ->having('distance', '<', $distance);
 
-
     }
 }
