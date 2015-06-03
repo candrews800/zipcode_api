@@ -7,6 +7,7 @@ class Zipcode extends Model{
 
     public $timestamps = false;
     protected $fillable = ['zipcode', 'city', 'state', 'lat', 'lon'];
+    protected $hidden = ['id'];
 
     public static function createFromCSV($row){
         $fields = [
@@ -21,7 +22,7 @@ class Zipcode extends Model{
     }
 
     public function getNearbyZipcodes($distance){
-        return self::nearby($this->lat, $this->lon, $distance)->distinct()->lists('zipcode');
+        return self::nearby($this->lat, $this->lon, $distance)->distinct()->take(25)->lists('zipcode');
     }
 
     public function scopeNearby($query, $lat, $lon, $distance){

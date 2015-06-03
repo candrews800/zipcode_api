@@ -19,3 +19,5 @@ Route::bind('zipcode', function($value)
 Route::get('/near/{zipcode}/{distance}', 'ZipcodeController@getNearby');
 Route::get('/get/{zipcode}', 'ZipcodeController@get');
 Route::get('/find/{city}', 'ZipcodeController@find');
+
+Route::get('/', 'HomeController@index');
