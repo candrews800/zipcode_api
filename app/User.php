@@ -31,4 +31,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	protected $hidden = ['password', 'remember_token'];
 
+
+    public function apiKey()
+    {
+        return $this->hasOne('App\ApiKey');
+    }
+
 }

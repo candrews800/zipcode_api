@@ -2,6 +2,7 @@
 
 use App\User;
 use Validator;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
 
 class Registrar implements RegistrarContract {
@@ -29,11 +30,17 @@ class Registrar implements RegistrarContract {
 	 */
 	public function create(array $data)
 	{
-		return User::create([
-			'name' => $data['name'],
-			'email' => $data['email'],
-			'password' => bcrypt($data['password']),
-		]);
+        $user = User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+        ]);
+
+        $user->apiKey()->save(new \App\ApiKey(array(
+            'api_key' => Hash::make($user->name)
+        )));
+
+		return $user;
 	}
 
 }

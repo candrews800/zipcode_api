@@ -26,3 +26,9 @@ Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
 ]);
+
+Route::get('create_api', function() {
+    return App\User::find(1)->apiKey()->save(new App\ApiKey(array(
+        'api_key' => 'test_api_key'
+    )));
+});
