@@ -37,7 +37,7 @@ class Registrar implements RegistrarContract {
         ]);
 
         $user->apiKey()->save(new \App\ApiKey(array(
-            'api_key' => Hash::make($user->name)
+            'api_key' => Hash::make($user->email)
         )));
 
 		return $user;

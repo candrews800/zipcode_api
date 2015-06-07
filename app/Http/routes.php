@@ -16,19 +16,14 @@ Route::bind('zipcode', function($value)
     return App\Zipcode::where('zipcode', $value)->first();
 });
 
-Route::get('/near/{zipcode}/{distance}', 'ZipcodeController@getNearby');
-Route::get('/get/{zipcode}', 'ZipcodeController@get');
-Route::get('/find/{city}', 'ZipcodeController@find');
+Route::get('/near/{zipcode}/{distance}', ['middleware' => 'rate_limit', 'uses' => 'ZipcodeController@getNearby']);
+Route::get('/get/{zipcode}', ['middleware' => 'rate_limit', 'uses' => 'ZipcodeController@get']);
+Route::get('/find/{city}', ['middleware' => 'rate_limit', 'uses' => 'ZipcodeController@find']);
 
 Route::get('/', 'HomeController@index');
+Route::get('user', ['middleware' => 'auth', 'uses' => 'HomeController@userDetails']);
 
 Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
 ]);
-
-Route::get('create_api', function() {
-    return App\User::find(1)->apiKey()->save(new App\ApiKey(array(
-        'api_key' => 'test_api_key'
-    )));
-});

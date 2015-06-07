@@ -1,5 +1,9 @@
 <?php namespace App\Http\Controllers;
 
+use \Illuminate\Support\Facades\Redis;
+use \Illuminate\Support\Facades\Auth;
+
+
 class HomeController extends Controller {
 
 	/*
@@ -22,5 +26,19 @@ class HomeController extends Controller {
 	{
 		return view('home');
 	}
+
+    public function userDetails()
+    {
+        $api_requests = [
+            'second' => Redis::get(Auth::user()->apikey.':second'),
+            'minute' => Redis::get(Auth::user()->apikey.':minute'),
+            'hour' => Redis::get(Auth::user()->apikey.':hour')
+
+        ];
+
+        return view('userDetails')->with([
+            'api_requests' => $api_requests
+        ]);
+    }
 
 }
