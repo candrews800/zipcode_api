@@ -13,12 +13,12 @@
 
 Route::bind('zipcode', function($value)
 {
-    return App\Zipcode::where('zipcode', $value)->first();
+    return App\Zipcode::get($value);
 });
 
 Route::get('/near/{zipcode}/{distance}', ['middleware' => 'rate_limit', 'uses' => 'ZipcodeController@getNearby']);
 Route::get('/get/{zipcode}', ['middleware' => 'rate_limit', 'uses' => 'ZipcodeController@get']);
-Route::get('/find/{city}', ['middleware' => 'rate_limit', 'uses' => 'ZipcodeController@find']);
+Route::get('/find/{city}', ['middleware' => 'rate_limit', 'uses' => 'ZipcodeController@search']);
 
 Route::get('/', 'HomeController@index');
 Route::get('/docs', 'HomeController@docs');

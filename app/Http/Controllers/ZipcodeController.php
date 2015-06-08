@@ -11,21 +11,8 @@ class ZipcodeController extends Controller {
         return $zip;
     }
 
-    public function find($location){
-        $location_array = explode(',', $location);
-        $city = trim($location_array[0]);
-
-        if(strpos($location, ',')){
-            $state = trim($location_array[1]);
-        }
-
-
-        if(isset($state)){
-            $zips = Zipcode::where('city', 'LIKE', '%'.$city.'%')->where('state', 'LIKE', '%'.$state.'%')->take(10)->get();
-        }
-        else{
-            $zips = Zipcode::where('city', 'LIKE', '%'.$city.'%')->take(10)->get();
-        }
+    public function search($location){
+        $zips = Zipcode::search($location);
 
         if(sizeof($zips)){
             return $zips;
