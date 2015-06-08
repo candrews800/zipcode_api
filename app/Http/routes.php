@@ -21,6 +21,7 @@ Route::get('/get/{zipcode}', ['middleware' => 'rate_limit', 'uses' => 'ZipcodeCo
 Route::get('/find/{city}', ['middleware' => 'rate_limit', 'uses' => 'ZipcodeController@find']);
 
 Route::get('/', 'HomeController@index');
+Route::get('/docs', 'HomeController@docs');
 Route::get('user', ['middleware' => 'auth', 'uses' => 'HomeController@userDetails']);
 
 Route::controllers([

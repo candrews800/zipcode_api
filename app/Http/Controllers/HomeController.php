@@ -27,6 +27,11 @@ class HomeController extends Controller {
 		return view('home');
 	}
 
+    public function docs()
+    {
+        return view('docs');
+    }
+
     public function userDetails()
     {
         $api_requests = [

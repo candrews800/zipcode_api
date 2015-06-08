@@ -26,6 +26,7 @@
         <nav>
             <ul class="nav nav-pills pull-right">
                 <li role="presentation"><a href="{{ url('/') }}">Home</a></li>
+                <li role="presentation"><a href="{{ url('/docs') }}">Docs</a></li>
                 @if (Auth::guest())
                     <li role="presentation"><a href="{{ url('/auth/login') }}">Login</a></li>
                     <li role="presentation"><a href="{{ url('/auth/register') }}">Register</a></li>
