@@ -85,6 +85,7 @@
 @section('js')
 
     <script>
+        var apiKey = '?api_key=$2y$10$mUkeWNJV8UvmmS49JzZUKuZwcin5wtWEkohYHA7OkS8R5RhM3N.ca';
         $('#getZipcodeForm input[type="text"]').on('input', function(){
             var zipcode = $(this).val();
 
@@ -107,7 +108,7 @@
         });
 
         function getZipcodeDetails(zipcode){
-            var url = '{{ url('get') }}/' + zipcode;
+            var url = '{{ url('get') }}/' + zipcode + apiKey;
 
             $.getJSON(url, function(data){
                 $('#getZipcodeDetails').text(JSON.stringify(data, null, 2));
@@ -134,7 +135,7 @@
         });
 
         function getNearbyZipcodes(zipcode, distance){
-            var url = '{{ url('near') }}/' + zipcode + '/' + distance;
+            var url = '{{ url('near') }}/' + zipcode + '/' + distance + apiKey;
 
             $.getJSON(url, function(data){
                 $('#listNearbyZipcodes').text(JSON.stringify(data, null, 2));
@@ -152,7 +153,7 @@
         function getZipcodesByLocation(location){
 
             console.log(location);
-            var url = '{{ url('find') }}/' + location;
+            var url = '{{ url('find') }}/' + location + apiKey;
 
             console.log(url);
 

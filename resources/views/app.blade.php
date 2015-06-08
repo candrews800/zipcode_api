@@ -25,7 +25,7 @@
     <div class="header clearfix">
         <nav>
             <ul class="nav nav-pills pull-right">
-                <li role="presentation" class="active"><a href="#">Home</a></li>
+                <li role="presentation"><a href="{{ url('/') }}">Home</a></li>
                 @if (Auth::guest())
                     <li role="presentation"><a href="{{ url('/auth/login') }}">Login</a></li>
                     <li role="presentation"><a href="{{ url('/auth/register') }}">Register</a></li>
@@ -46,7 +46,7 @@
     @yield('content')
 
     <footer class="footer">
-        <p>&copy; Company 2014</p>
+        <p>&copy; Zipcode API {{ date('Y') }}</p>
     </footer>
 
 </div> <!-- /container -->
