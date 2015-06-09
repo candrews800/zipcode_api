@@ -48,7 +48,7 @@
 
         <h3>Get Zipcode Details</h3>
         <p>To get more information about a zip code, use the following link and the API will provide you with a JSON response related to the query.</p>
-        <p><code>{{ url('get') }}/zip_code?api_key={your_api_key}</code></p>
+        <p><code>{{ url('get') }}/{zip_code}?api_key={your_api_key}</code></p>
         <p><strong>{zip_code}:</strong> This is where you will put in the zip code you want more information about. 33024, 96075, etc.</p>
         <p><strong>{your_api_key}:</strong> Put your unique API key here.</p>
 
@@ -60,10 +60,10 @@
             <div class="col-md-9">
                 <p><code>{{ url('get') }}/33024?api_key=WEkohYHA7OkS8R5RhM3N.ca</code></p>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-6">
                 <p>Response</p>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-6">
             <pre>{
   "zipcode": 33024,
   "lat": 26.023567,
@@ -89,10 +89,10 @@
             <div class="col-md-9">
                 <p><code>{{ url('near') }}/33024/25?api_key=WEkohYHA7OkS8R5RhM3N.ca</code></p>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-6">
                 <p>Response</p>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-6">
                 <div class="well">[ 33004, 33008, 33009, 33010, 33012, 33013, 33014, 33015, 33016, 33018, 33019, 33020, 33021, 33022, 33023, 33024, 33025, 33026, 33027, 33028, 33029, 33047, 33054, 33055, 33056 ]</div>
             </div>
         </div>
@@ -111,10 +111,10 @@
             <div class="col-md-9">
                 <p><code>{{ url('find') }}/Hollywood, FL?api_key=WEkohYHA7OkS8R5RhM3N.ca</code></p>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-6">
                 <p>Response</p>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-6">
             <pre class="pre-scrollable">[
   {
     "zipcode": 33019,

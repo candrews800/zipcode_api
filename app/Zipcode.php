@@ -27,9 +27,12 @@ class Zipcode extends Model{
 
     public function scopeNearby($query, $lat, $lon, $distance){
         return $query->select(
-            DB::raw('( 3959 * acos( cos( radians('.$lat.') ) * cos( radians( lat ) )
-                                            * cos( radians(lon) - radians('.$lon.')) + sin(radians('.$lat.'))
-                                            * sin( radians(lat)))) AS distance, zipcode '
+            DB::raw('zipcode,
+                     ( 3959 * acos( cos( radians ('.$lat.') )
+                            * cos( radians ( lat ) )
+                            * cos( radians ( lon ) - radians ('.$lon.') )
+                            + sin( radians ('.$lat.') )
+                            * sin( radians ( lat ) ) ) ) AS distance'
             ))
             ->having('distance', '<', $distance);
     }
@@ -48,10 +51,10 @@ class Zipcode extends Model{
 
 
         if(isset($state)){
-            $zips = self::where('city', 'LIKE', '%'.$city.'%')->where('state', 'LIKE', '%'.$state.'%')->take(10)->get();
+            $zips = self::where('city', 'LIKE', '%'.$city.'%')->where('state', 'LIKE', '%'.$state.'%')->get();
         }
         else{
-            $zips = self::where('city', 'LIKE', '%'.$city.'%')->take(10)->get();
+            $zips = self::where('city', 'LIKE', '%'.$city.'%')->get();
         }
 
         return $zips;
