@@ -88,7 +88,7 @@
 @section('js')
 
     <script>
-        var apiKey = '?api_key={{ env('SITE_API_KEY') }};
+        var apiKey = '?api_key={{ env('SITE_API_KEY') }}';
         $('#getZipcodeForm input[type="text"]').on('input', function(){
             var zipcode = $(this).val();
 
