@@ -189,6 +189,12 @@
 ]</pre>
             </div>
         </div>
+
+        <h1>API Endpoints</h1>
+
+        <p>zipcode/{zipcode},{zipcode2}? - returns array of 1 or more Zipcode objects</p>
+        <p>nearZipcode/{zipcode}/{distance} - returns array of 1 or more Zipcode objects</p>
+        <p>search/{location}?number={limit}&skip={offset} - returns array of 1 or more Zipcode objects</p>
     </div>
 </div>
 
