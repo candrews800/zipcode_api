@@ -11,11 +11,6 @@
 |
 */
 
-Route::bind('zipcode', function($value)
-{
-    return App\Zipcode::get($value);
-});
-
 Route::get('/near/{zipcode}/{distance}', ['middleware' => 'rate_limit', 'uses' => 'ZipcodeController@getNearby']);
 Route::get('/get/{zipcode}', ['middleware' => 'rate_limit', 'uses' => 'ZipcodeController@get']);
 Route::get('/find/{city}', ['middleware' => 'rate_limit', 'uses' => 'ZipcodeController@search']);

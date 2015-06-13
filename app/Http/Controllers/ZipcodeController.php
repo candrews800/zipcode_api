@@ -3,12 +3,23 @@
 use App\Zipcode;
 
 class ZipcodeController extends Controller {
-    public function getNearby(Zipcode $zip, $distance){
-        return $zip->getNearbyZipcodes($distance);
+    public function getNearby($zip, $distance){
+        $zipcode = Zipcode::get($zip);
+        return $zipcode->getNearbyZipcodes($distance);
     }
 
-    public function get(Zipcode $zip){
-        return $zip;
+    public function get($zip){
+        $zips[] = $zip;
+        if(strpos($zip, ',')){
+            $zips = explode(',', $zip);
+
+            $trim = function($val){
+                return trim($val);
+            };
+
+            $zips = array_map($trim, $zips);
+        }
+        return Zipcode::whereIn('zipcode', $zips)->get();
     }
 
     public function search($location){
