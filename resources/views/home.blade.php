@@ -58,7 +58,7 @@
         </div>
 
         <div class="col-lg-6">
-            <div id="listNearbyZipcodes" class="well">Enter a zipcode and distance to find nearby zips...</div>
+            <pre id="listNearbyZipcodes" class="pre-scrollable">Enter a zipcode and distance...</pre>
         </div>
 
         <div class="col-lg-12">
@@ -79,7 +79,7 @@
         </div>
 
         <div class="col-lg-6">
-            <pre id="listZipcodes" class="pre-scrollable">Search for zipcodes by location...</pre>
+            <pre id="listZipcodes" >Search for zipcodes by location...</pre>
         </div>
     </div>
 

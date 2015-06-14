@@ -21,18 +21,21 @@ class Zipcode extends Model{
         return self::create($fields);
     }
 
-    public function getNearbyZipcodes($distance){
-        return self::nearby($this->lat, $this->lon, $distance)->distinct()->lists('zipcode');
+    public function getNearbyZipcodes($distance = 25){
+        if($distance > 100){
+            $distance = 100;
+        }
+        return self::nearby($this->lat, $this->lon, $distance)->distinct()->get();
     }
 
     public function scopeNearby($query, $lat, $lon, $distance){
         return $query->select(
-            DB::raw('zipcode,
-                     ( 3959 * acos( cos( radians ('.$lat.') )
+            DB::raw('*,
+                     ROUND( 3959 * acos( cos( radians ('.$lat.') )
                             * cos( radians ( lat ) )
                             * cos( radians ( lon ) - radians ('.$lon.') )
                             + sin( radians ('.$lat.') )
-                            * sin( radians ( lat ) ) ) ) AS distance'
+                            * sin( radians ( lat ) ) ) , 2 ) AS distance'
             ))
             ->having('distance', '<', $distance);
     }

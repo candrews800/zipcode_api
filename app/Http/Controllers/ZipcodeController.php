@@ -1,6 +1,8 @@
 <?php namespace App\Http\Controllers;
 
 use App\Zipcode;
+use App\JsonWriter;
+use Illuminate\Http\Response;
 
 class ZipcodeController extends Controller {
     public function getNearby($zip, $distance){
@@ -19,7 +21,10 @@ class ZipcodeController extends Controller {
 
             $zips = array_map($trim, $zips);
         }
-        return Zipcode::whereIn('zipcode', $zips)->get();
+
+        $zipcodes = Zipcode::whereIn('zipcode', $zips)->get();
+
+        return new Response(new JsonWriter($zipcodes), 200);
     }
 
     public function search($location){
