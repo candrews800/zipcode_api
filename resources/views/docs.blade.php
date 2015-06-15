@@ -25,7 +25,7 @@
                     <tbody>
                     <tr>
                         <td>Per Second</td>
-                        <td class="text-center">3</td>
+                        <td class="text-center">5</td>
                     </tr>
                     <tr>
                         <td>Per Minute</td>
