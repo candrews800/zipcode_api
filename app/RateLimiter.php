@@ -2,8 +2,8 @@
 
 abstract class RateLimiter{
     protected $max_requests = [
-        'second' => 3,
-        'minute' => 40,
+        'second' => 5,
+        'minute' => 60,
         'hour' => 250
     ];
     protected $api_key;

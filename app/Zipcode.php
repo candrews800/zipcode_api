@@ -21,14 +21,17 @@ class Zipcode extends Model{
         return self::create($fields);
     }
 
-    public function getNearbyZipcodes($distance = null){
+    public function getNearbyZipcodes($distance = null, $details = false){
         if($distance > 100){
             $distance = 100;
         }
         if($distance == null){
             $distance = 15;
         }
-        return self::nearby($this->lat, $this->lon, $distance)->distinct()->get();
+        if($details){
+            return self::nearby($this->lat, $this->lon, $distance)->distinct()->get();
+        }
+        return self::nearby($this->lat, $this->lon, $distance)->distinct()->lists('zipcode');
     }
 
     public function scopeNearby($query, $lat, $lon, $distance){

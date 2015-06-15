@@ -7,7 +7,7 @@ use \Illuminate\Support\Facades\Input;
 class ZipcodeController extends Controller {
     public function getNearby($zip, $distance){
         $zipcode = Zipcode::get($zip);
-        $nearby = $zipcode->getNearbyZipcodes($distance);
+        $nearby = $zipcode->getNearbyZipcodes($distance, Input::has('details'));
 
         return response()->json(ResponseConstructor::success($nearby), 200);
     }
