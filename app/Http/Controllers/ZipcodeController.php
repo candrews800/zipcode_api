@@ -2,6 +2,7 @@
 
 use App\Zipcode;
 use App\ResponseConstructor;
+use \Illuminate\Support\Facades\Input;
 
 class ZipcodeController extends Controller {
     public function getNearby($zip, $distance){
@@ -29,6 +30,13 @@ class ZipcodeController extends Controller {
             return response()->json(ResponseConstructor::noneFound(), 404);
         }
 
+        if(Input::has('embed')){
+            $embed = Input::get('embed');
+            foreach($zipcodes as $zipcode){
+                $zipcode->embed($embed);
+            }
+        }
+
         return response()->json(ResponseConstructor::success($zipcodes), 200);
     }
 
@@ -39,6 +47,6 @@ class ZipcodeController extends Controller {
             return response()->json(ResponseConstructor::success($zips), 200);
         }
 
-        return 'None found.';
+        return response()->json(ResponseConstructor::noneFound(), 404);
     }
 }
