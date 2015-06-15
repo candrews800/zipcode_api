@@ -1,6 +1,7 @@
 <?php namespace App\Http\Middleware;
 
 use Closure;
+use App\ResponseConstructor;
 
 class RateLimit {
 
@@ -15,13 +16,13 @@ class RateLimit {
 	{
 
         if($request->input('api_key', null) == null){
-            return 'No API Key Provided.';
+            return response()->json(ResponseConstructor::noKey(), 403);
         }
 
         $key = $request->input('api_key');
 
         if(\App\ApiKey::where('api_key', $key)->count() == 0){
-            return 'Invalid API Key Provided.';
+            return response()->json(ResponseConstructor::invalidKey(), 403);
         }
 
 
@@ -29,8 +30,7 @@ class RateLimit {
         $api_key->setRateLimiter(new \App\RedisRateLimiter($api_key->api_key));
 
         if( ! $api_key->rate_limiter->isValidRequest()){
-
-            return 'Exceeded amount of attempts. Please wait.';
+            return response()->json(ResponseConstructor::tooManyAttempts(), 429);
         }
 
         $api_key->rate_limiter->doRequest();

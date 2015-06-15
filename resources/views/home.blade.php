@@ -79,7 +79,7 @@
         </div>
 
         <div class="col-lg-6">
-            <pre id="listZipcodes" >Search for zipcodes by location...</pre>
+            <pre id="listZipcodes" class="pre-scrollable">Search for zipcodes by location...</pre>
         </div>
     </div>
 

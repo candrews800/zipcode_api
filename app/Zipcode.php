@@ -52,12 +52,11 @@ class Zipcode extends Model{
             $state = trim($location_array[1]);
         }
 
-
         if(isset($state)){
-            $zips = self::where('city', 'LIKE', '%'.$city.'%')->where('state', 'LIKE', '%'.$state.'%')->get();
+            $zips = self::where('city', 'LIKE', '%'.$city.'%')->where('state', 'LIKE', '%'.$state.'%')->take(25)->get();
         }
         else{
-            $zips = self::where('city', 'LIKE', '%'.$city.'%')->get();
+            $zips = self::where('city', 'LIKE', '%'.$city.'%')->take(25)->get();
         }
 
         return $zips;

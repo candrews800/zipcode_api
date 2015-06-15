@@ -1,13 +1,14 @@
 <?php namespace App\Http\Controllers;
 
 use App\Zipcode;
-use App\JsonWriter;
-use Illuminate\Http\Response;
+use App\ResponseConstructor;
 
 class ZipcodeController extends Controller {
     public function getNearby($zip, $distance){
         $zipcode = Zipcode::get($zip);
-        return $zipcode->getNearbyZipcodes($distance);
+        $nearby = $zipcode->getNearbyZipcodes($distance);
+
+        return response()->json(ResponseConstructor::success($nearby), 200);
     }
 
     public function get($zip){
@@ -24,14 +25,18 @@ class ZipcodeController extends Controller {
 
         $zipcodes = Zipcode::whereIn('zipcode', $zips)->get();
 
-        return new Response(new JsonWriter($zipcodes), 200);
+        if(sizeof($zipcodes) < 1){
+            return response()->json(ResponseConstructor::noneFound(), 404);
+        }
+
+        return response()->json(ResponseConstructor::success($zipcodes), 200);
     }
 
     public function search($location){
         $zips = Zipcode::search($location);
 
         if(sizeof($zips)){
-            return $zips;
+            return response()->json(ResponseConstructor::success($zips), 200);
         }
 
         return 'None found.';
