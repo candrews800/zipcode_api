@@ -29,7 +29,7 @@
                     </tr>
                     <tr>
                         <td>Per Minute</td>
-                        <td class="text-center">40</td>
+                        <td class="text-center">60</td>
                     </tr>
                     <tr>
                         <td>Per Hour</td>
@@ -1036,78 +1036,101 @@
 
         <h4>Example</h4>
         <p><strong>GET</strong> <code>{{ url('find') }}/Hollywood, FL?api_key=WEkohYHA7OkS8R5RhM3N.ca</code></p>
-            <pre class="pre-scrollable">[
-  {
-    "zipcode": 33019,
-    "lat": 26.018967,
-    "lon": -80.12231,
-    "city": "Hollywood",
-    "state": "FL"
-  },
-  {
-    "zipcode": 33020,
-    "lat": 26.016984,
-    "lon": -80.14925,
-    "city": "Hollywood",
-    "state": "FL"
-  },
-  {
-    "zipcode": 33021,
-    "lat": 26.023634,
-    "lon": -80.18922,
-    "city": "Hollywood",
-    "state": "FL"
-  },
-  {
-    "zipcode": 33022,
-    "lat": 26.013368,
-    "lon": -80.144217,
-    "city": "Hollywood",
-    "state": "FL"
-  },
-  {
-    "zipcode": 33023,
-    "lat": 25.989119,
-    "lon": -80.21318,
-    "city": "Hollywood",
-    "state": "FL"
-  },
-  {
-    "zipcode": 33024,
-    "lat": 26.023567,
-    "lon": -80.23851,
-    "city": "Hollywood",
-    "state": "FL"
-  },
-  {
-    "zipcode": 33025,
-    "lat": 25.990494,
-    "lon": -80.27326,
-    "city": "Hollywood",
-    "state": "FL"
-  },
-  {
-    "zipcode": 33026,
-    "lat": 26.0267,
-    "lon": -80.29443,
-    "city": "Hollywood",
-    "state": "FL"
-  },
-  {
-    "zipcode": 33027,
-    "lat": 25.981409,
-    "lon": -80.34491,
-    "city": "Hollywood",
-    "state": "FL"
-  },
-  {
-    "zipcode": 33029,
-    "lat": 26.006373,
-    "lon": -80.40212,
-    "city": "Hollywood",
-    "state": "FL"
-  }
-]</pre>
+            <pre class="pre-scrollable">{
+  "data": [
+    {
+      "zipcode": 33019,
+      "lat": 26.02,
+      "lon": -80.16,
+      "city": "HOLLYWOOD",
+      "state": "FL"
+    },
+    {
+      "zipcode": 33020,
+      "lat": 26.02,
+      "lon": -80.16,
+      "city": "HOLLYWOOD",
+      "state": "FL"
+    },
+    {
+      "zipcode": 33021,
+      "lat": 26.02,
+      "lon": -80.16,
+      "city": "HOLLYWOOD",
+      "state": "FL"
+    },
+    {
+      "zipcode": 33022,
+      "lat": 26.02,
+      "lon": -80.16,
+      "city": "HOLLYWOOD",
+      "state": "FL"
+    },
+    {
+      "zipcode": 33023,
+      "lat": 26.02,
+      "lon": -80.16,
+      "city": "HOLLYWOOD",
+      "state": "FL"
+    },
+    {
+      "zipcode": 33024,
+      "lat": 26.02,
+      "lon": -80.16,
+      "city": "HOLLYWOOD",
+      "state": "FL"
+    },
+    {
+      "zipcode": 33025,
+      "lat": 26.02,
+      "lon": -80.16,
+      "city": "HOLLYWOOD",
+      "state": "FL"
+    },
+    {
+      "zipcode": 33026,
+      "lat": 26.02,
+      "lon": -80.16,
+      "city": "HOLLYWOOD",
+      "state": "FL"
+    },
+    {
+      "zipcode": 33027,
+      "lat": 26.02,
+      "lon": -80.16,
+      "city": "HOLLYWOOD",
+      "state": "FL"
+    },
+    {
+      "zipcode": 33029,
+      "lat": 26.02,
+      "lon": -80.16,
+      "city": "HOLLYWOOD",
+      "state": "FL"
+    },
+    {
+      "zipcode": 33081,
+      "lat": 26.02,
+      "lon": -80.16,
+      "city": "HOLLYWOOD",
+      "state": "FL"
+    },
+    {
+      "zipcode": 33083,
+      "lat": 26.02,
+      "lon": -80.16,
+      "city": "HOLLYWOOD",
+      "state": "FL"
+    },
+    {
+      "zipcode": 33084,
+      "lat": 26,
+      "lon": -80.34,
+      "city": "HOLLYWOOD",
+      "state": "FL"
+    }
+  ]
+}</pre>
     </div>
 </div>
 
