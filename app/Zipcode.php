@@ -86,7 +86,7 @@ class Zipcode extends Model{
     }
 
     public function embedNear($distance = null){
-        $this->near = $this->getNearbyZipcodes($distance);
+        $this->near = $this->getNearbyZipcodes($distance, true);
         return $this;
     }
 }
