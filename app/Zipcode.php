@@ -47,7 +47,12 @@ class Zipcode extends Model{
     }
 
     public static function get($zipcode){
-        return self::where('zipcode', $zipcode)->firstOrFail();
+        try{
+            $zip = self::where('zipcode', $zipcode)->firstOrFail();
+        } catch(\Exception $e){
+            return 0;
+        }
+        return $zip;
     }
 
     public static function search($location){
