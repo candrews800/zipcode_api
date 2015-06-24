@@ -36,7 +36,7 @@ Route::post('pull_update', function(){
     list($algo, $hash) = explode('=', $hubSignature, 2);
 
     // Get payload
-    $payload = file_get_contents('php://input');
+    $payload = Input::get('payload');
 
     // Calculate hash based on payload and the secret
     $payloadHash = hash_hmac($algo, $payload, $secret);
@@ -45,5 +45,5 @@ Route::post('pull_update', function(){
         // execute git pull
         return shell_exec("git pull");
     }
-    return 0;
+    return $payload;
 });
