@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Input;
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
