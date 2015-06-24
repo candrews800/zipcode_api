@@ -2,11 +2,10 @@
 
 class ZipCodeTest extends TestCase {
 
-    public function testGetNearbyZipcodes()
+    public function testGetZipcode()
     {
         $zip = App\Zipcode::get(33024);
-
-        $this->assertEquals($zip->city, 'Hollywood');
+        $this->assertEquals(ucfirst(strtolower($zip->city)), 'Hollywood');
     }
 
     public function testSearchZipcodes(){
@@ -28,7 +27,6 @@ class ZipCodeTest extends TestCase {
         $nearbyZips = $zip->getNearbyZipcodes(25);
 
         $this->assertContains(33328, $nearbyZips);
-
     }
 
 }
