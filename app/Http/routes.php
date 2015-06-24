@@ -43,7 +43,7 @@ Route::post('pull_update', function(){
 
 
     // Calculate hash based on payload and the secret
-    $payloadHash = hash_hmac($algo, $payload, 'review123');
+    $payloadHash = hash_hmac($algo, $payload, $secret);
 
     if($hash === $payloadHash){
         // execute git pull
