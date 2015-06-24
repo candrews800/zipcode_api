@@ -27,8 +27,6 @@ Route::controllers([
 ]);
 
 Route::post('pull_update', function(){
-    return shell_exec("git pull");
-
     $secret = env('GITHUB_PULL_SECRET');
 
     $headers = getallheaders();
@@ -49,8 +47,7 @@ Route::post('pull_update', function(){
 
     if($hash === $payloadHash){
         // execute git pull
-        shell_exec("git pull");
-        return 'Success';
+        return shell_exec("git pull");
     }
     return 'Wrong Hash';
 });
