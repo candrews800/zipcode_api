@@ -27,14 +27,12 @@ Route::controllers([
 ]);
 
 Route::post('pull_update', function(){
-
     $inputJSON = file_get_contents('php://input');
     $input = json_decode( $inputJSON, TRUE );
 
-    dd($input);
-
-    if($input['hook']['config']['secret'] == env('GITHUB_PULL_SECRET=1234567890')){
-        return 1;
+    if($input['hook']['config']['secret'] == env('GITHUB_PULL_SECRET')){
+        // execute git pull
+        return shell_exec("git pull");
     }
     return 0;
 });
