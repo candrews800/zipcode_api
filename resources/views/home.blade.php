@@ -6,7 +6,7 @@
         <h1>Zipcode API</h1>
         <p class="lead">Get quick information about zipcodes such as latitude, longitude, city and state. Find nearby zip codes. Free use up to 5,000 requests/day.</p>
         <p>
-            <a class="btn btn-lg btn-success" href="{{ url('auth/register') }}" role="button">Sign up today</a>
+            <a class="btn btn-lg btn-success" href="{{ url('auth/register') }}" role="button">Sign Up</a>
             <a class="btn btn-lg btn-info" href="{{ url('docs') }}" role="button">View Docs</a>
         </p>
     </div>
