@@ -27,6 +27,8 @@ Route::controllers([
 ]);
 
 Route::post('pull_update', function(){
+    return shell_exec("git pull");
+
     $secret = env('GITHUB_PULL_SECRET');
 
     $headers = getallheaders();
