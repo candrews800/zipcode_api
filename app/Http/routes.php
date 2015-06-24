@@ -49,5 +49,5 @@ Route::post('pull_update', function(){
         // execute git pull
         return shell_exec("git pull");
     }
-    return $payloadHash;
+    return 'Wrong Hash';
 });

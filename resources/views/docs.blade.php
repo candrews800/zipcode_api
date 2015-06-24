@@ -58,7 +58,7 @@
   "data": [
     {
       "zipcode": 33024,
-      "lat": 26.01,
+      "lat": 26.02,
       "lon": -80.16,
       "city": "HOLLYWOOD",
       "state": "FL"
