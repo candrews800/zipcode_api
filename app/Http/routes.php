@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Input;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -24,3 +26,12 @@ Route::controllers([
     'password' => 'Auth\PasswordController',
 ]);
 
+Route::post('pull_update', function(){
+    $inputJSON = file_get_contents('php://input');
+    $input = json_decode( $inputJSON, TRUE );
+
+    if($input['hook']['config']['secret'] == env('GITHUB_PULL_SECRET=1234567890')){
+        return 1;
+    }
+    return 0;
+});
