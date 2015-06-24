@@ -27,10 +27,21 @@ Route::controllers([
 ]);
 
 Route::post('pull_update', function(){
-    $inputJSON = file_get_contents('php://input');
-    $input = json_decode( $inputJSON, TRUE );
+    $secret = env('GITHUB_PULL_SECRET');
 
-    if($input['hook']['config']['secret'] == env('GITHUB_PULL_SECRET')){
+    $headers = getallheaders();
+    $hubSignature = $headers['X-Hub-Signature'];
+
+    // Split signature into algorithm and hash
+    list($algo, $hash) = explode('=', $hubSignature, 2);
+
+    // Get payload
+    $payload = file_get_contents('php://input');
+
+    // Calculate hash based on payload and the secret
+    $payloadHash = hash_hmac($algo, $payload, $secret);
+
+    if($hash === $payloadHash){
         // execute git pull
         return shell_exec("git pull");
     }
