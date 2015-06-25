@@ -21,6 +21,22 @@ class Zipcode extends Model{
         return self::create($fields);
     }
 
+    public static function distance($zipcode1, $zipcode2){
+        $zipcode1 = self::get($zipcode1);
+        $zipcode2 = self::get($zipcode2);
+
+        if( ! $zipcode1 || ! $zipcode2){
+            throw new \Exception('Error in finding Zip');
+        }
+        $distance = 3959 * acos( cos( deg2rad( $zipcode1->lat ) )
+                                * cos( deg2rad( $zipcode2->lat ) )
+                                * cos( deg2rad( $zipcode2->lon ) - deg2rad($zipcode1->lon) )
+                                + sin( deg2rad( $zipcode1->lat ) )
+                                * sin( deg2rad( $zipcode2->lat ) ) );
+
+        return $distance;
+    }
+
     public function getNearbyZipcodes($distance = 15, $details = false){
         if($distance > 100){
             $distance = 100;

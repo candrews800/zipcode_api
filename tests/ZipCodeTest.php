@@ -24,9 +24,17 @@ class ZipCodeTest extends TestCase {
 
     public function testNearbyZipcodes(){
         $zip = App\Zipcode::get(33024);
+
         $nearbyZips = $zip->getNearbyZipcodes(25);
 
         $this->assertContains(33328, $nearbyZips);
+    }
+
+    public function testDistanceBetweenZipcodes(){
+        $distance = App\Zipcode::distance(33024, 33328);
+
+        $this->assertGreaterThan(5, $distance);
+        $this->assertLessThan(10, $distance);
     }
 
 }

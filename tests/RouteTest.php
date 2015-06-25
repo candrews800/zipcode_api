@@ -84,4 +84,28 @@ class RouteTest extends TestCase {
         $this->assertRegExp('/"error":/', $response->getContent());
     }
 
+    public function testCalcDistance(){
+        $url = '/distance/33024/33328';
+
+        $response = $this->call('GET', $url);
+        $this->assertEquals(200, $response->status());
+        $this->assertRegExp('/"data":/', $response->getContent());
+
+        $data = json_decode($response->getContent(), true);
+        $distance = $data['data']['distance'];
+
+        $this->assertGreaterThan(5, $distance);
+        $this->assertLessThan(10, $distance);
+    }
+
+    /**
+     * @depends testCalcDistance
+     */
+    public function testCalcDistanceWithInvalid(){
+        $url = '/distance/33024/33231328';
+
+        $response = $this->call('GET', $url);
+        $this->assertEquals(404, $response->status());
+        $this->assertRegExp('/"error":/', $response->getContent());
+    }
 }

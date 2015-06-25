@@ -54,4 +54,14 @@ class ZipcodeController extends Controller {
 
         return response()->json(ResponseConstructor::noneFound(), 404);
     }
+
+    public function calcDistance($zipcode1, $zipcode2){
+        try{
+            $distance = Zipcode::distance($zipcode1, $zipcode2);
+        } catch(\Exception $e){
+            return response()->json(ResponseConstructor::noneFound(), 404);
+        }
+
+        return response()->json(ResponseConstructor::success(['distance' => $distance]), 200);
+    }
 }
