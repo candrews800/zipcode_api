@@ -58,7 +58,7 @@ class RouteTest extends TestCase {
         $url = '/near/33024/15?details=true';
 
         $this->visit($url)
-            ->seeJson(['city' => 'FORT LAUDERDALE']);
+            ->seeJson(['city' => 'Fort Lauderdale']);
     }
 
 

@@ -12,7 +12,7 @@ class Zipcode extends Model{
     public static function createFromCSV($row){
         $fields = [
             'zipcode' => $row[0],
-            'city' => ucfirst(strtolower($row[1])),
+            'city' => ucwords(strtolower($row[1])),
             'state' => strtoupper($row[2]),
             'lat' => round($row[3],2),
             'lon' => round($row[4],2)
