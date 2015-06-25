@@ -21,6 +21,14 @@ class Zipcode extends Model{
         return self::create($fields);
     }
 
+    public function getLatAttribute($value){
+        return round($value,2);
+    }
+
+    public function getLonAttribute($value){
+        return round($value,2);
+    }
+
     public static function distance($zipcode1, $zipcode2){
         $zipcode1 = self::get($zipcode1);
         $zipcode2 = self::get($zipcode2);
