@@ -12,10 +12,10 @@ class Zipcode extends Model{
     public static function createFromCSV($row){
         $fields = [
             'zipcode' => $row[0],
-            'city' => $row[1],
-            'state' => $row[2],
-            'lat' => $row[3],
-            'lon' => $row[4]
+            'city' => ucfirst(strtolower($row[1])),
+            'state' => strtoupper($row[2]),
+            'lat' => round($row[3],2),
+            'lon' => round($row[4],2)
         ];
 
         return self::create($fields);

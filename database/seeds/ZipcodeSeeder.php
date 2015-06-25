@@ -20,7 +20,7 @@ class ZipcodeTableSeeder extends Seeder {
         $this->command->info('Opening:' . storage_path() . '/zipcode.csv');
         $zipcode_handle = fopen(storage_path() . '/zipcode.csv', 'r');
         if( ! $zipcode_handle){
-            throwException('Could not open '.storage_path().'/zipcode.csv');
+            throw new \Exception('Could not open '.storage_path().'/zipcode.csv');
         }
 
         // Skip Headers in CSV
