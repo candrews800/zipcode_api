@@ -4,6 +4,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller {
 
@@ -61,7 +62,7 @@ class AuthController extends Controller {
         ]);
 
         $user->apiKey()->save(new \App\ApiKey(array(
-            'api_key' => Hash::make($user->email)
+            'api_key' => bcrypt($data['email'])
         )));
 
         return $user;
