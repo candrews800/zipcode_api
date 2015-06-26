@@ -48,7 +48,7 @@
                 @endif
             </ul>
         </nav>
-        <h3>zzipcode <small>Zipcode API</small></h3>
+        <h3><a href="{{ url('/') }}">zzipcode api</a></h3>
     </div>
 
     <div class="row">
