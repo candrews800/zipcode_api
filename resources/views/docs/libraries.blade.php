@@ -12,10 +12,13 @@ $page = 'libraries';
             <h3 id="php" class="page-header">PHP</h3>
             <h4><strong>Installation</strong></h4>
             <div class="well">
-                composer require candrews/zipcode
+                composer require candrews/zipcode<br/>
+                composer install<br/>
+                Place your API Key into /vendor/candrews/Zipcode/config.php
             </div>
 
             <h4><strong>Usage</strong></h4>
+
             <p><strong>Get Zipcode</strong></p>
 
 <pre>
