@@ -81,6 +81,33 @@
         <div class="col-lg-6">
             <pre id="listZipcodes" class="pre-scrollable">Search for zipcodes by location...</pre>
         </div>
+
+        <div class="col-lg-12">
+            <h4>Get Distance</h4>
+        </div>
+        <div class="col-lg-6">
+            <form id="getDistance" class="row">
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        <label class="sr-only">Zipcode</label>
+                        <input name="zipcode1" type="text" class="form-control" placeholder="Zipcode">
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        <label class="sr-only">Zipcode</label>
+                        <input name="zipcode2" type="text" class="form-control" placeholder="Zipcode">
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <button type="submit" class="btn btn-default pull-right">Search</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-lg-6">
+            <pre id="listDistance" class="pre-scrollable">Enter two zipcodes to find distance...</pre>
+        </div>
     </div>
 
 @stop
@@ -159,16 +186,31 @@
         });
 
         function getZipcodesByLocation(location){
-
-            console.log(location);
             var url = '{{ url('find') }}/' + location + apiKey;
-
-            console.log(url);
 
             $.getJSON(url, function(data){
                 $('#listZipcodes').text(JSON.stringify(data, null, 2));
             }).fail(function(data) {
                 $('#listZipcodes').text(JSON.stringify(data['responseJSON'], null, 2));
+            });
+        }
+
+        $('#getDistance').submit(function(event){
+            event.preventDefault();
+            
+            var zipcode1 = $('#getDistance [name="zipcode1"]').val();
+            var zipcode2 = $('#getDistance [name="zipcode2"]').val();
+
+            getDistance(zipcode1, zipcode2);
+        });
+
+        function getDistance(zipcode1, zipcode2){
+            var url = '{{ url('distance') }}/' + zipcode1 + '/' + zipcode2 + apiKey;
+
+            $.getJSON(url, function(data){
+                $('#listDistance').text(JSON.stringify(data, null, 2));
+            }).fail(function(data) {
+                $('#listDistance').text(JSON.stringify(data['responseJSON'], null, 2));
             });
         }
     </script>
