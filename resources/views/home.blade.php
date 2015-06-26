@@ -17,13 +17,13 @@
         </div>
         <div class="col-lg-6">
             <form id="getZipcodeForm" class="row">
-                <div class="col-xs-6">
+                <div class="col-xs-9">
                     <div class="form-group">
                         <label class="sr-only">Zipcode</label>
                         <input type="text" class="form-control" placeholder="Zipcode">
                     </div>
                 </div>
-                <div class="col-xs-6">
+                <div class="col-xs-3">
                     <button type="submit" class="btn btn-default pull-right">Search</button>
                 </div>
             </form>
@@ -105,16 +105,19 @@
             event.preventDefault();
             var zipcode = $('#getZipcodeForm input[type="text"]').val();
 
-            if(zipcode.length == 5){
-                getZipcodeDetails(zipcode);
-            }
+            getZipcodeDetails(zipcode);
         });
 
-        function getZipcodeDetails(zipcode){
+        function getZipcodeDetails(zipcode, distance = 0){
             var url = '{{ url('get') }}/' + zipcode + apiKey;
+            if(distance > 0){
+                url += '&embed=near:'+distance;
+            }
 
             $.getJSON(url, function(data){
                 $('#getZipcodeDetails').text(JSON.stringify(data, null, 2));
+            }).fail(function(data) {
+                $('#getZipcodeDetails').text(JSON.stringify(data['responseJSON'], null, 2));
             });
         }
 
@@ -142,6 +145,8 @@
 
             $.getJSON(url, function(data){
                 $('#listNearbyZipcodes').text(JSON.stringify(data, null, 2));
+            }).fail(function(data) {
+                $('#listNearbyZipcodes').text(JSON.stringify(data['responseJSON'], null, 2));
             });
         }
 
@@ -162,6 +167,8 @@
 
             $.getJSON(url, function(data){
                 $('#listZipcodes').text(JSON.stringify(data, null, 2));
+            }).fail(function(data) {
+                $('#listZipcodes').text(JSON.stringify(data['responseJSON'], null, 2));
             });
         }
     </script>
