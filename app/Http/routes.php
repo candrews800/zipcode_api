@@ -17,8 +17,15 @@ Route::get('/find/{city}', ['middleware' => 'rate_limit', 'uses' => 'ZipcodeCont
 Route::get('/distance/{zipcode1}/{zipcode2}', ['middleware' => 'rate_limit', 'uses' => 'ZipcodeController@calcDistance']);
 
 Route::get('/', 'HomeController@index');
-Route::get('/docs', 'HomeController@docs');
 Route::get('user', ['middleware' => 'auth', 'uses' => 'HomeController@userDetails']);
+
+Route::group(['prefix' => 'docs'], function () {
+    Route::get('/', 'DocumentationController@gettingStarted');
+    Route::get('/getting-started', 'DocumentationController@gettingStarted');
+    Route::get('/how-to-use', 'DocumentationController@howToUse');
+    Route::get('/endpoints', 'DocumentationController@endpoints');
+    Route::get('/libraries', 'DocumentationController@libraries');
+});
 
 Route::controllers([
     'auth' => 'Auth\AuthController',

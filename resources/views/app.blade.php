@@ -41,7 +41,7 @@
                 @endif
             </ul>
         </nav>
-        <h3 class="text-muted">Zipcode API</h3>
+        <h3>zzipcode <small>Zipcode API</small></h3>
     </div>
 
     @yield('content')

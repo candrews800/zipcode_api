@@ -15,11 +15,11 @@ class ResponseConstructor{
     }
 
     public static function noKey(){
-        return self::error(403, 4030, 'No Api Key was provided.');
+        return self::error(4030, 403, 'No Api Key was provided.');
     }
 
     public static function invalidKey(){
-        return self::error(403, 4031, 'The key provided does not match any records.');
+        return self::error(4031, 403, 'The key provided does not match any records.');
     }
 
     public static function error($code, $http_code, $message){

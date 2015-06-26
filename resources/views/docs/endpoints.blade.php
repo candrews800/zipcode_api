@@ -1,60 +1,21 @@
-@extends('app')
+<?php
+$page = 'endpoints';
+?>
+
+@extends('docs.template')
 
 @section('content')
-<div class="row">
-    <div class="col-xs-12">
-        <h1 class="page-header">Getting Started</h1>
-        <h3>Registering for API Key</h3>
-        <p>To use the API, you must first register for an account. <a href="{{ url('auth/register') }}">Click here to sign up.</a></p>
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>API Endpoints</h1>
+            <h3 id="get" class="page-header">Get Zipcode Details</h3>
+            <p>To get more information about a zip code, use the following link and the API will provide you with a JSON response related to the query.</p>
+            <p><strong>GET</strong> <code>{{ url('get') }}/{zip_code}?api_key={your_api_key}</code></p>
+            <p>Optional: <code>&embed=near:{distance}</code></p>
 
-        <p>After creating an account, you'll be given an API Key. This is your unique key that identifies yourself to us. We'll use it to verify
-            that you are indeed a registered user as well as log all attempts you make.</p>
-
-        <h3>Usage Limits</h3>
-        <p>As of now, this API is free for usage. There are limits on the amount of requests that can be made in a given amount of time, however.
-            See the following for usage limits.</p>
-
-        <div class="row">
-            <div class="col-lg-4">
-                <table class="table table-bordered">
-                    <thead>
-                    <tr>
-                        <th></th>
-                        <th class="text-center">Max Requests</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>Per Second</td>
-                        <td class="text-center">5</td>
-                    </tr>
-                    <tr>
-                        <td>Per Minute</td>
-                        <td class="text-center">60</td>
-                    </tr>
-                    <tr>
-                        <td>Per Hour</td>
-                        <td class="text-center">250</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <h3>Checking Status</h3>
-        <p>You can check your status at anytime by signing in and going to <a href="{{ url('user') }}">My Account</a> from the drop-down in the main menu.</p>
-
-        <h1 class="page-header">How to Use</h1>
-        <p>Once you've signed up and received your API key, making requests to the API is very easy.</p>
-
-        <h3>Get Zipcode Details</h3>
-        <p>To get more information about a zip code, use the following link and the API will provide you with a JSON response related to the query.</p>
-        <p><code>{{ url('get') }}/{zip_code}?api_key={your_api_key}</code></p>
-        <p><strong>Optional:</strong><code>&embed=near:{distance}</code></p>
-
-        <h5 class="text-muted">Examples</h5>
-        <h4>Get details for zipcode 33024</h4>
-        <p><strong>GET</strong> <code>{{ url('get') }}/33024?api_key=WEkohYHA7OkS8R5RhM3N.ca</code></p>
+            <h5 class="text-muted">Examples</h5>
+            <h4>Get details for zipcode 33024</h4>
+            <p><strong>GET</strong> <code>{{ url('get') }}/33024?api_key=WEkohYHA7OkS8R5RhM3N.ca</code></p>
         <pre>{
   "data": [
     {
@@ -67,9 +28,9 @@
   ]
 }</pre>
 
-        <h4>Get details for zipcode and all nearby zipcodes within 15 miles</h4>
+            <h4>Get details for zipcode and all nearby zipcodes within 15 miles</h4>
 
-        <p><strong>GET</strong> <code>{{ url('get') }}/33024?api_key=WEkohYHA7OkS8R5RhM3N.ca&embed=near:15</code></p>
+            <p><strong>GET</strong> <code>{{ url('get') }}/33024?api_key=WEkohYHA7OkS8R5RhM3N.ca&embed=near:15</code></p>
         <pre class="pre-scrollable">{
    "data":[
       {
@@ -876,14 +837,14 @@
    ]
 }</pre>
 
-        <h3>Get Nearby Zip Codes</h3>
-        <p>To get zip codes that are within a certain radius, you can use the following.</p>
-        <p><code>{{ url('near') }}/{zip_code}/{distance}?api_key={your_api_key}</code></p>
-        <p><strong>Optional:</strong> <code>&details=true</code></p>
+            <h3 id="near" class="page-header">Get Nearby Zip Codes</h3>
+            <p>To get zip codes that are within a certain radius, you can use the following.</p>
+            <p><code>{{ url('near') }}/{zip_code}/{distance}?api_key={your_api_key}</code></p>
+            <p><strong>Optional:</strong> <code>&details=true</code></p>
 
-        <h5 class="text-muted">Examples</h5>
-        <h4>Get list of zipcodes within 15 miles of 33024</h4>
-        <p><strong>GET</strong> <code>{{ url('near') }}/33024/15?api_key=WEkohYHA7OkS8R5RhM3N.ca</code></p>
+            <h5 class="text-muted">Examples</h5>
+            <h4>Get list of zipcodes within 15 miles of 33024</h4>
+            <p><strong>GET</strong> <code>{{ url('near') }}/33024/15?api_key=WEkohYHA7OkS8R5RhM3N.ca</code></p>
         <pre class="pre-scrollable">{
    "data":[
       33004,
@@ -904,8 +865,8 @@
    ]
 }
 </pre>
-        <h4>Get detailed list of zipcodes within 15 miles of 33024</h4>
-        <p><strong>GET</strong> <code>{{ url('near') }}/33024/15?api_key=WEkohYHA7OkS8R5RhM3N.ca&details=true</code></p>
+            <h4>Get detailed list of zipcodes within 15 miles of 33024</h4>
+            <p><strong>GET</strong> <code>{{ url('near') }}/33024/15?api_key=WEkohYHA7OkS8R5RhM3N.ca&details=true</code></p>
         <pre class="pre-scrollable">{
    "data":[
       {
@@ -1030,13 +991,12 @@
       }
    ]
 }</pre>
+            <h3 id="find" class="page-header">Find Zip Codes for City, ST</h3>
+            <p>For when you want to find all related zip codes for a city.</p>
+            <p><code>{{ url('find') }}/{location}?api_key={your_api_key}</code></p>
 
-        <h3>Find Zip Codes for City, ST</h3>
-        <p>For when you want to find all related zip codes for a city.</p>
-        <p><code>{{ url('find') }}/{location}?api_key={your_api_key}</code></p>
-
-        <h4>Example</h4>
-        <p><strong>GET</strong> <code>{{ url('find') }}/Hollywood, FL?api_key=WEkohYHA7OkS8R5RhM3N.ca</code></p>
+            <h4>Example</h4>
+            <p><strong>GET</strong> <code>{{ url('find') }}/Hollywood, FL?api_key=WEkohYHA7OkS8R5RhM3N.ca</code></p>
             <pre class="pre-scrollable">{
   "data": [
     {
@@ -1132,7 +1092,18 @@
     }
   ]
 }</pre>
+            <h3 id="distance" class="page-header">Get Distance Between Two Zipcodes</h3>
+            <p>For when you want to find the distance between two zipcodes.</p>
+            <p><code>{{ url('distance') }}/{zipcode1}/{zipcode2}?api_key={your_api_key}</code></p>
+
+            <h4>Example</h4>
+            <p><strong>GET</strong> <code>{{ url('distance') }}/33024/33328?api_key=WEkohYHA7OkS8R5RhM3N.ca</code></p>
+            <pre class="pre-scrollable">{
+    "data":{
+        "distance": 8.31198
+    }
+}</pre>
+        </div>
     </div>
-</div>
 
 @stop
