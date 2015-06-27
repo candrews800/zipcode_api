@@ -52,7 +52,7 @@
     </div>
 
     <div class="row">
-        <div class="col-xs-3">
+        <div class="col-sm-3">
             <div class="panel panel-{{ $page == 'getting-started' ? 'primary' : 'default' }}">
                 <div class="panel-heading">
                     <h3 class="panel-title"><a href="{{ url('docs/getting-started') }}">Getting Started</a></h3>
@@ -97,7 +97,7 @@
                 </ul>
             </div>
         </div>
-        <div class="col-xs-9">
+        <div class="col-sm-9">
             @yield('content')
         </div>
     </div>
