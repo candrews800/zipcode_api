@@ -120,7 +120,7 @@
             var zipcode = $(this).val();
 
             if(zipcode.length == 5){
-                getZipcodeDetails(zipcode);
+                getZipcodeDetails(zipcode, 0);
             }
 
             if(zipcode.length > 5){
