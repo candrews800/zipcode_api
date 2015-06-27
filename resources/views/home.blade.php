@@ -132,12 +132,12 @@
             event.preventDefault();
             var zipcode = $('#getZipcodeForm input[type="text"]').val();
 
-            getZipcodeDetails(zipcode);
+            getZipcodeDetails(zipcode, 5);
 
             return false;
         });
 
-        function getZipcodeDetails(zipcode, distance = 0){
+        function getZipcodeDetails(zipcode, distance){
             var url = '{{ url('get') }}/' + zipcode + apiKey;
             if(distance > 0){
                 url += '&embed=near:'+distance;
