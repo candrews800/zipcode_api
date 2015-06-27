@@ -132,7 +132,7 @@
             event.preventDefault();
             var zipcode = $('#getZipcodeForm input[type="text"]').val();
 
-            getZipcodeDetails(zipcode, 5);
+            getZipcodeDetails(zipcode, 0);
 
             return false;
         });
