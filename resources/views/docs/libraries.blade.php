@@ -22,7 +22,6 @@ $page = 'libraries';
             <p><strong>Get Zipcode</strong></p>
 
 <pre>
-// Get Details About Zipcode
 $zipcode = new Zipcode\Zipcode(33024);
 $zipcode->get();
 
@@ -36,7 +35,6 @@ var_dump($zipcode); // Valid $zipcode
             <p><strong>Get Zipcode w/ Nearby Zipcodes</strong></p>
 
 <pre>
-// Get Details About Zipcode
 $zipcode = new Zipcode\Zipcode(33024);
 $zipcode->get(15);
 
@@ -50,25 +48,23 @@ var_dump($zipcode->near); // Array of Zipcode Objects within 15 mi of 33024
             <p><strong>Get Nearby Zipcodes w/ Details</strong></p>
 
 <pre>
-// Get Details About Zipcode
 $zipcode = new Zipcode\Zipcode(33024);
 $zipcodes = $zipcode->near(15);
 
 if($zipcodes->hasError()){
-    echo $zipcode->getError();
+    echo $zipcodes->getError();
 }
 
-var_dump($zipcodes); // Array of Zipcodes within 15 mi of 33024
+var_dump($zipcodes); // Array of Zipcode Objects within 15 mi of 33024
 </pre>
 
             <p><strong>Get Nearby Zipcodes</strong></p>
 
 <pre>
-// Get Details About Zipcode
 $zipcode = new Zipcode\Zipcode(33024);
 $zipcodes = $zipcode->near(15, false);
 
-if($zipcodes->hasError()){
+if($zipcode->hasError()){
     echo $zipcode->getError();
 }
 
@@ -78,11 +74,10 @@ var_dump($zipcodes); // Array of Zipcodes within 15 mi of 33024, [33328, 33023, 
             <p><strong>Search for Zipcodes by Location Name</strong></p>
 
 <pre>
-// Get Details About Zipcode
 $zipcode = new Zipcode\Zipcode();
 $zipcodes = $zipcode->search("Hollywood, FL");
 
-if($zipcodes->hasError()){
+if($zipcode->hasError()){
     echo $zipcode->getError();
 }
 
@@ -92,11 +87,10 @@ var_dump($zipcodes); // Array of Zipcodes related to Hollywood, FL
             <p><strong>Get Distance Between Two Zipcodes</strong></p>
 
 <pre>
-// Get Details About Zipcode
 $zipcode = new Zipcode\Zipcode(33024);
 $distance = $zipcode->distance(33328);
 
-if($zipcodes->hasError()){
+if($zipcode->hasError()){
     echo $zipcode->getError();
 }
 
