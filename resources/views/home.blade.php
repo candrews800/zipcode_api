@@ -128,7 +128,7 @@
             }
         });
 
-        $('#getZipcodeForm-submit').click(function(event){
+        $('#getZipcodeForm-submit').bind("click touchstart", function(event){
             event.preventDefault();
             var zipcode = $('#getZipcodeForm input[type="text"]').val();
 
@@ -148,7 +148,7 @@
             });
         }
 
-        $('#getNearbyZipcodes-submit').click(function(event){
+        $('#getNearbyZipcodes-submit').bind("click touchstart", function(event){
             event.preventDefault();
 
             var zipcode = $('#nearby-zipcode').val();
@@ -177,7 +177,7 @@
             });
         }
 
-        $('#findZipcodes-submit').click(function(event){
+        $('#findZipcodes-submit').bind("click touchstart", function(event){
             event.preventDefault();
 
             var location = $('#findZipcodes input[type="text"]').val();
@@ -195,7 +195,7 @@
             });
         }
 
-        $('#getDistance-submit').click(function(event){
+        $('#getDistance-submit').bind("click touchstart", function(event){
             event.preventDefault();
 
             var zipcode1 = $('#getDistance [name="zipcode1"]').val();
