@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 <div class="col-xs-3">
-                    <button type="submit" class="btn btn-default pull-right">Search</button>
+                    <a id="getZipcodeForm-submit" class="btn btn-default pull-right">Search</a>
                 </div>
             </form>
         </div>
@@ -50,7 +50,7 @@
                     </div>
                 </div>
                 <div class="col-xs-3">
-                    <button type="submit" class="btn btn-default pull-right">Search</button>
+                    <a id="getNearbyZipcodes-submit" class="btn btn-default pull-right">Search</a>
                 </div>
 
 
@@ -73,7 +73,7 @@
                     </div>
                 </div>
                 <div class="col-xs-3">
-                    <button type="submit" class="btn btn-default pull-right">Search</button>
+                    <a id="findZipcodes-submit" class="btn btn-default pull-right">Search</a>
                 </div>
             </form>
         </div>
@@ -100,7 +100,7 @@
                     </div>
                 </div>
                 <div class="col-xs-4">
-                    <button type="submit" class="btn btn-default pull-right">Search</button>
+                    <a id="getDistance-submit" class="btn btn-default pull-right">Search</a>
                 </div>
             </form>
         </div>
@@ -128,7 +128,7 @@
             }
         });
 
-        $('#getZipcodeForm').submit(function(event){
+        $('#getZipcodeForm-submit').click(function(event){
             event.preventDefault();
             var zipcode = $('#getZipcodeForm input[type="text"]').val();
 
@@ -148,7 +148,7 @@
             });
         }
 
-        $('#getNearbyZipcodes').submit(function(event){
+        $('#getNearbyZipcodes-submit').click(function(event){
             event.preventDefault();
 
             var zipcode = $('#nearby-zipcode').val();
@@ -177,7 +177,7 @@
             });
         }
 
-        $('#findZipcodes').submit(function(event){
+        $('#findZipcodes-submit').click(function(event){
             event.preventDefault();
 
             var location = $('#findZipcodes input[type="text"]').val();
@@ -195,9 +195,9 @@
             });
         }
 
-        $('#getDistance').submit(function(event){
+        $('#getDistance-submit').click(function(event){
             event.preventDefault();
-            
+
             var zipcode1 = $('#getDistance [name="zipcode1"]').val();
             var zipcode2 = $('#getDistance [name="zipcode2"]').val();
 
