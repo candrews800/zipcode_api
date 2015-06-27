@@ -128,11 +128,13 @@
             }
         });
 
-        $('#getZipcodeForm-submit').bind("click touchstart", function(event){
+        $('#getZipcodeForm').submit(function(event){
             event.preventDefault();
             var zipcode = $('#getZipcodeForm input[type="text"]').val();
 
             getZipcodeDetails(zipcode);
+
+            return false;
         });
 
         function getZipcodeDetails(zipcode, distance = 0){
@@ -148,8 +150,7 @@
             });
         }
 
-        $('#getNearbyZipcodes-submit').bind("click touchstart", function(event){
-            event.preventDefault();
+        $('#getNearbyZipcodes').submit(function(event){
 
             var zipcode = $('#nearby-zipcode').val();
             var distance = $('#nearby-distance').val();
@@ -165,6 +166,8 @@
             if(parseInt(distance) > 500) {
                 $('#nearby-distance').val(500);
             }
+
+            return false;
         });
 
         function getNearbyZipcodes(zipcode, distance){
@@ -177,12 +180,14 @@
             });
         }
 
-        $('#findZipcodes-submit').bind("click touchstart", function(event){
+        $('#findZipcodes').submit(function(event){
             event.preventDefault();
 
             var location = $('#findZipcodes input[type="text"]').val();
 
             getZipcodesByLocation(location);
+
+            return false;
         });
 
         function getZipcodesByLocation(location){
@@ -195,13 +200,15 @@
             });
         }
 
-        $('#getDistance-submit').bind("click touchstart", function(event){
+        $('#getDistance').submit(function(event){
             event.preventDefault();
 
             var zipcode1 = $('#getDistance [name="zipcode1"]').val();
             var zipcode2 = $('#getDistance [name="zipcode2"]').val();
 
             getDistance(zipcode1, zipcode2);
+
+            return false;
         });
 
         function getDistance(zipcode1, zipcode2){
