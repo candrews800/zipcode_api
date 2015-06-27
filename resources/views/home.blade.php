@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 <div class="col-xs-3">
-                    <button id="getZipcodeForm-submit" class="btn btn-default pull-right" onclick="void(0)">Search</button>
+                    <button  type="submit" id="getZipcodeForm-submit" class="btn btn-default pull-right">Search</button>
                 </div>
             </form>
         </div>
@@ -50,7 +50,7 @@
                     </div>
                 </div>
                 <div class="col-xs-3">
-                    <button id="getNearbyZipcodes-submit" class="btn btn-default pull-right" onclick="void(0)">Search</button>
+                    <button  type="submit" id="getNearbyZipcodes-submit" class="btn btn-default pull-right">Search</button>
                 </div>
 
 
@@ -73,7 +73,7 @@
                     </div>
                 </div>
                 <div class="col-xs-3">
-                    <button id="findZipcodes-submit" class="btn btn-default pull-right" onclick="void(0)">Search</button>
+                    <button  type="submit" id="findZipcodes-submit" class="btn btn-default pull-right">Search</button>
                 </div>
             </form>
         </div>
@@ -100,7 +100,7 @@
                     </div>
                 </div>
                 <div class="col-xs-4">
-                    <button id="getDistance-submit" class="btn btn-default pull-right" onclick="void(0)">Search</button>
+                    <button type="submit" id="getDistance-submit" class="btn btn-default pull-right">Search</button>
                 </div>
             </form>
         </div>
